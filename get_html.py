@@ -1,9 +1,6 @@
 import requests
 import argparse
 
-# Reference
-#      https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-oembed
-
 
 def get_html(tweet_url):
     params = (
@@ -14,7 +11,7 @@ def get_html(tweet_url):
     response = requests.get(
         'https://publish.twitter.com/oembed', params=params)
     html = "".join(response.json()['html'].split('\n'))
-    print(html)
+    return html
 
 
 def debug():
@@ -23,7 +20,8 @@ def debug():
                         help='tweet URL ex: https://twitter.com/jack/status/20')
     args = parser.parse_args()
 
-    get_html(args.tweet_url)
+    html = get_html(args.tweet_url)
+    print(html)
 
 
 if __name__ == "__main__":
