@@ -11,11 +11,11 @@ channel = 'fanart'
 file = '.logs.txt'
 
 
-# @respond_to('del')
-# def del_logs(message):
-#     slacker.files.upload(file_=file, channel=channel)
-#     os.system('echo '' > .logs.txt')
-#     message.reply('delete logs')
+@respond_to('del')
+def del_logs(message):
+    slacker.files.upload(file_=file, channel=channel)
+    os.system('echo '' > .logs.txt') 
+    message.reply('delete logs')
 
 
 @respond_to('sum')
