@@ -17,14 +17,14 @@ def get_tw_link(message):
     logs_overwrite(message, ch)
 
 
-@listen_to('del')
+@listen_to(r'^del$')
 def del_logs(message):
     ch = get_channel(message)
     os.system('echo '' > .logs_{}.txt'.format(ch))
     message.send('delete logs')
 
 
-@listen_to('sum')
+@listen_to(r'^sum$')
 def up_summary(message):
     ch = get_channel(message)
     file_name = '.logs_{}.txt'.format(ch)
@@ -32,6 +32,7 @@ def up_summary(message):
     message.send('ファイルをアップロードしました')
     os.system('echo '' > .logs_{}.txt'.format(ch))
     message.send('delete logs')
+    
 
 
 def get_html(tweet_url):
