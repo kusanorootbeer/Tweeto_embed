@@ -61,4 +61,8 @@ def logs_overwrite(message, ch):
     message.send(html)
 
     with open('.logs_{}.txt'.format(ch), mode='a')as f:
-        f.write(html)
+        f.write(html+'\n')
+
+    rows = sum([1 for _ in open('.logs_{}.txt'.format(ch))])
+    if rows % 5 ==0 :
+        message.send('total html codes: {}'.format(rows))
